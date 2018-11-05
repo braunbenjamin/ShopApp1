@@ -34,7 +34,7 @@ package com.apiomat.nativemodule.salesmodule1;
  * 
  */
 @com.apiomat.nativemodule.Module( description="", 
-         usedModules = {"Basics" }, securityPermissions = {} )
+         usedModules = { "Basics" }, securityPermissions = {} )
 public class SalesModule1 implements com.apiomat.nativemodule.IModule
 {
     static com.apiomat.nativemodule.IApplicationConfigProxy APP_CONFIG_PROXY;

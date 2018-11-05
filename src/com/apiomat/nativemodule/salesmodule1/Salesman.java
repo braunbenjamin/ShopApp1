@@ -28,7 +28,7 @@ package com.apiomat.nativemodule.salesmodule1;
 import com.apiomat.nativemodule.basics.*;
 import com.apiomat.nativemodule.salesmodule1.*;
 /**
-* Generated class for your Salesman data model
+* Generated default class representing a user in your app
 *
 * DO NOT CHANGE ANY CODE EXCEPT CLASS ANNOTATIONS OR CLASS ATTRIBUTES HERE!
 * EVERYTHING ELSE WILL GET OVERWRITTEN!
@@ -38,11 +38,11 @@ import com.apiomat.nativemodule.salesmodule1.*;
 @com.apiomat.nativemodule.Model( moduleName = "SalesModule1",
     hooksClassNameTransient = "com.apiomat.nativemodule.salesmodule1.SalesmanHooksTransient", 
     hooksClassNameNonTransient = "com.apiomat.nativemodule.salesmodule1.SalesmanHooksNonTransient", 
-    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.User, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
+    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.Guest, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
     requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Owner, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
-public class Salesman extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.salesmodule1.Salesman> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.salesmodule1.Salesman>
+public class Salesman extends com.apiomat.nativemodule.basics.User
 {
     /**
      * Contains the name of the module that this model belongs to

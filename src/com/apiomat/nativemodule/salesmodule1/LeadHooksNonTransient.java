@@ -25,6 +25,7 @@
 package com.apiomat.nativemodule.salesmodule1;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
@@ -37,7 +38,8 @@ import com.apiomat.nativemodule.salesmodule1.*;
 
 public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodule1.Lead> implements com.apiomat.nativemodule.IModelHooksNonTransient<com.apiomat.nativemodule.salesmodule1.Lead>
 {
-    protected com.apiomat.nativemodule.salesmodule1.Lead model;
+    private static final Long String = null;
+	protected com.apiomat.nativemodule.salesmodule1.Lead model;
 
     @Override
     public void setCallingModel( com.apiomat.nativemodule.salesmodule1.Lead model )
@@ -54,6 +56,9 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void beforePost( com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
     	obj.setLastVisit(new Date());
+    	obj.setScore((long) 100);
+    	
+    	
     }
 
 

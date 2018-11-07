@@ -57,7 +57,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
     	obj.setLastVisit(new Date());
     	obj.setScore((long) 100);
-    	
+    	this.model.log("New Lead added.");
     	
     }
 

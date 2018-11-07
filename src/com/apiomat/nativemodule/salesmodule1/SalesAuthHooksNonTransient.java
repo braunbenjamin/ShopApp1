@@ -40,19 +40,8 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     {
         this.model = model;
     }
-    
-    public boolean userAuth (String user, String password) {
-    	
-    	return true;
-    }
-    
-    @Override
-    public boolean auth( String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail,
-        String password, Request r )
-    {
-    	final boolean authenticationResult = userAuth(userNameOrEmail, password);
-    	return authenticationResult;
-    }
+
+
     /*
      * Following Methods can be used if your data model is NOT set to TRANSIENT
      */

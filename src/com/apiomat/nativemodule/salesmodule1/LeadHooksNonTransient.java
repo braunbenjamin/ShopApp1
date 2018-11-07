@@ -29,7 +29,8 @@ import java.util.logging.Logger;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
-
+import com.apiomat.nativemodule.mysqlaomdbusershopapp1.Employees;
+import com.apiomat.nativemodule.mysqlaomdbusershopapp1.MySQLAomdbuserShopApp1;
 import com.apiomat.nativemodule.salesmodule1.*;
 
 /**
@@ -58,6 +59,11 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	obj.setLastVisit(new Date());
     	String score = (String) SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.SCORE, r.getApplicationName(), r.getSystem() ); 
     	obj.setScore(Long.valueOf(score));
+    	final IModel[] result = SalesModule1.AOM.findByNames( r.getApplicationName( ), Employees.MODULE_NAME, Employees.MODEL_NAME, "", r ); 
+    	Employees emp = (Employees) result[0];
+    	ContactProtocol cp = new ContactProtocol();
+    	cp.setNotes(emp.getName());
+    	obj.postContactAttempts(cp);
     	this.model.log("New Lead added.");
     	
     }

@@ -59,11 +59,18 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	obj.setLastVisit(new Date());
     	String score = (String) SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.SCORE, r.getApplicationName(), r.getSystem() ); 
     	obj.setScore(Long.valueOf(score));
+    	
     	final IModel[] result = SalesModule1.AOM.findByNames( r.getApplicationName( ), Employees.MODULE_NAME, Employees.MODEL_NAME, "", r ); 
-    	Employees emp = (Employees) result[0];
-    	ContactProtocol cp = new ContactProtocol();
-    	cp.setNotes(emp.getName());
-    	obj.postContactAttempts(cp);
+    	if(result != null && result.length >0) {
+	    	Employees emp = (Employees) result[0];
+	    	
+	    	ContactProtocol cp = this.model.createObject(ContactProtocol.class,r);
+	    	cp.setNotes(emp.getName());
+	    	cp.save();
+	    	
+	    	obj.postContactAttempts(cp);
+    	}
+    	
     	this.model.log("New Lead added.");
     	
     }

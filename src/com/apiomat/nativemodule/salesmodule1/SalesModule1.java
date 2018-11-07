@@ -24,6 +24,7 @@
  */
 package com.apiomat.nativemodule.salesmodule1;
 
+import com.apiomat.nativemodule.NativeModuleConfig.Type;
 
 /**
  * Generated class for starting and stopping your module. 
@@ -42,18 +43,21 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
     
     // Sample for a module configuration
     //
-    // @com.apiomat.nativemodule.NativeModuleConfig(
-    //     datatype = Type.TEXT,
-    //     example = "localhost",
-    //     title = "Server Hostname",
-    //     info = "Hostname of the server",
-    //     defaultValue = "localhost",
-    //     notifyAllNodes = true,
-    //     order = 1 )
+    
+    @com.apiomat.nativemodule.NativeModuleConfig(
+         datatype = Type.NUMBER,
+         example = "100",
+         title = "Score",
+         info = "Score Value",
+         defaultValue = "100",
+         notifyAllNodes = true,
+         order = 1 )
+    public static String HOSTNAME = "SalesModule1_hostname";
     // public static String HOSTNAME = "SalesModule1_hostname";
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.HOSTNAME, appName, system );
+
 
     /**
      * This method gets called once in the cluster when the module is uploaded.

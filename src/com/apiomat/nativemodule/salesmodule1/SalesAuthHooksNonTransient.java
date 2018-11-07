@@ -43,8 +43,10 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
 
     
     public boolean userAuth (String user, String password) {
-    	
-    	return true;
+    	if(user.contains("@training.de")) {
+    		return true;
+    	}
+    	return false;
     }
     
     @Override

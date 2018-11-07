@@ -66,7 +66,7 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
             info = "Google-API-Key",
             defaultValue = "",
             notifyAllNodes = true,
-            order = 1 )
+            order = 2 )
        public static String GAPI = "SalesModule1_gapi";
     // public static String HOSTNAME = "SalesModule1_hostname";
     //

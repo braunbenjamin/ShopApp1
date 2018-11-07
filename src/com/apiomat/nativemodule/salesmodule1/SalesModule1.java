@@ -52,7 +52,7 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
          defaultValue = "100",
          notifyAllNodes = true,
          order = 1 )
-    public static String HOSTNAME = "SalesModule1_hostname";
+    public static String SCORE = "SalesModule1_score";
     // public static String HOSTNAME = "SalesModule1_hostname";
     //
     // Read @NativeModuleConfig values using the following code:

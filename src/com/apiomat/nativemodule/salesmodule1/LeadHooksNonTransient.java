@@ -56,8 +56,8 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void beforePost( com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
     	obj.setLastVisit(new Date());
-    	
-    	obj.setScore((long) SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.SCORE, r.getApplicationName(), r.getSystem() ));
+    	String score = (String) SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.SCORE, r.getApplicationName(), r.getSystem() ); 
+    	obj.setScore(Long.valueOf(score));
     	this.model.log("New Lead added.");
     	
     }
@@ -67,10 +67,12 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void afterPost( com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
     	String userEmail = r.getUserEmail();
-    	List<Salesman> salesman = this.model.findByNames(Salesman.class, "userName == "+ userEmail +"", r);
-    	for (Salesman salesman2 : salesman) {
-			salesman2.postListOfLeads(obj);
-		}
+    	List<Salesman> salesman = this.model.findByNames(Salesman.class, "userName == \""+ userEmail +"\"", r);
+    	if(null!=salesman && salesman.size()>0) {
+    		for (Salesman salesman2 : salesman) {
+    			salesman2.postListOfLeads(obj);
+    		}
+    	}
     }
 
     @Override

@@ -132,7 +132,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	
     	InputStream input;
 		try {
-			input = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+latstr+","+lonstr+"&zoom=14&size=400x400&key=AIzaSyCPAq6Ahjt3gEKeIw969PLuRUGlXx2pfSk").openStream();
+			input = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+latstr+","+lonstr+"&zoom=14&size=400x400&key="+SalesModule1.APP_CONFIG_PROXY.getConfigValue( SalesModule1.GAPI, r.getApplicationName(), r.getSystem() )).openStream();
 			obj.postAreaPicture(input,"staticmap","png");	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

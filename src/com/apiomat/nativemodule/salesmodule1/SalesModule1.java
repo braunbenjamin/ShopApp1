@@ -58,6 +58,16 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
          notifyAllNodes = true,
          order = 1 )
     public static String SCORE = "SalesModule1_score";
+    
+    @com.apiomat.nativemodule.NativeModuleConfig(
+            datatype = Type.TEXT,
+            example = "12334567ABCDEF",
+            title = "Google-API-Key",
+            info = "Google-API-Key",
+            defaultValue = "",
+            notifyAllNodes = true,
+            order = 1 )
+       public static String GAPI = "SalesModule1_gapi";
     // public static String HOSTNAME = "SalesModule1_hostname";
     //
     // Read @NativeModuleConfig values using the following code:

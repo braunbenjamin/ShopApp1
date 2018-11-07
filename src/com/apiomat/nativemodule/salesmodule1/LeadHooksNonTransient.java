@@ -23,6 +23,10 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule1;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -121,6 +125,21 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public boolean beforePut( com.apiomat.nativemodule.salesmodule1.Lead objFromDB, com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
+    	Double lat = obj.getRegPlaceLatitude();
+    	Double lon = obj.getRegPlaceLongitude();
+    	String latstr = lat.toString();
+    	String lonstr = lon.toString();
+    	
+    	InputStream input;
+		try {
+			input = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+latstr+","+lonstr+"&zoom=14&size=400x400&key=AIzaSyCPAq6Ahjt3gEKeIw969PLuRUGlXx2pfSk").openStream();
+			obj.postAreaPicture(input,"staticmap","png");	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
     	if(!r.getIsAccountRequest()) {
         	if(objFromDB.getScore() != obj.getScore()) {
         		this.model.throwException("score modification not allowed");

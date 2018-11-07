@@ -24,6 +24,9 @@
  */
 package com.apiomat.nativemodule.salesmodule1;
 
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
 import com.apiomat.nativemodule.Cron;
 import com.apiomat.nativemodule.IModel;
 import com.apiomat.nativemodule.NativeModuleConfig.Type;
@@ -111,7 +114,19 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
     @Override
     public int checkHealth( final String appName, final String system )
     {
-        return -1;
+    	int status = 500;
+    	try(Socket soc = new Socket())
+    	{
+    		soc.connect(new InetSocketAddress("193.31.27.46", 3306),1000);
+    		status = 0;
+    		
+    	}
+    	catch (Exception e)
+    	{
+    		AOM.log( com.apiomat.nativemodule.Level.ERROR, "SQL Server not available");
+    	}
+    	
+        return status;
     }
     
     @Cron( cronExpression = "0 0/30 * * * ?", executeOnAllNodes = true )

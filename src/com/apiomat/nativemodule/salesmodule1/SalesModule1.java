@@ -24,6 +24,8 @@
  */
 package com.apiomat.nativemodule.salesmodule1;
 
+import com.apiomat.nativemodule.Cron;
+import com.apiomat.nativemodule.IModel;
 import com.apiomat.nativemodule.NativeModuleConfig.Type;
 
 /**
@@ -111,4 +113,30 @@ public class SalesModule1 implements com.apiomat.nativemodule.IModule
     {
         return -1;
     }
+    
+    @Cron( cronExpression = "0 0/30 * * * ?", executeOnAllNodes = true )
+    public void myCustomCronMethod( com.apiomat.nativemodule.Request request)
+    {
+    	Long count = Long.valueOf("0");
+    	Long scoresum = Long.valueOf("0");
+    	IModel<?>[] foundmodels = AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
+    	
+    	
+    	
+    	for (IModel<?> model : foundmodels) {
+			count++;
+			Lead lead = (Lead)model;
+			
+			if(lead.getScore() == null){
+				
+			}else {
+				scoresum = lead.getScore() + scoresum;
+			}
+		}
+    	scoresum = scoresum / count;
+    	
+    	AOM.log(request.getApplicationName(), "Anzahl: "+count+" - Durchschnitt: "+scoresum+"");
+    	
+    }
+    
 }

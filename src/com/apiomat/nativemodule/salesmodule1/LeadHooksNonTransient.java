@@ -23,6 +23,8 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule1;
+import java.util.Date;
+
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
@@ -50,6 +52,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
+    	obj.setLastVisit(new Date());
     }
 
 

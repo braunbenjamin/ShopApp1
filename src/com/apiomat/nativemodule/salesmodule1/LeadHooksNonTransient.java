@@ -61,7 +61,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void afterPost( com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
     	String userEmail = r.getUserEmail();
-    	List<Salesman> salesman = this.model.findByNames(Salesman.class, "userName == "+userEmail, r);
+    	List<Salesman> salesman = this.model.findByNames(Salesman.class, "userName == \""+userEmail+"\", r);
     	for (Salesman salesman2 : salesman) {
 			salesman2.postListOfLeads(obj);
 		}

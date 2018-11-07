@@ -105,9 +105,13 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public boolean beforePut( com.apiomat.nativemodule.salesmodule1.Lead objFromDB, com.apiomat.nativemodule.salesmodule1.Lead obj, com.apiomat.nativemodule.Request r )
     {
-    	if(objFromDB.getScore() != obj.getScore()) {
-    		this.model.throwException("score modification not allowed");
-    		return true;
+    	if(r.getIsAccountRequest()) {
+        	if(objFromDB.getScore() != obj.getScore()) {
+        		this.model.throwException("score modification not allowed");
+        		return true;
+        	}else {
+        		return false;
+        	}
     	}else {
     		return false;
     	}
